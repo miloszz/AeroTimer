@@ -59,6 +59,7 @@ class ViewController: UIViewController {
         toggleButton.isEnabled = true
         currentStepLabel.text = "Get ready"
         nextStepLabel.text = steps[0]
+        step = -1
     }
     
     func updateTimer() {
