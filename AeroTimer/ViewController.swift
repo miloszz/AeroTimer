@@ -13,17 +13,24 @@ class ViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var toggleButton: UIButton!
+    @IBOutlet weak var currentStepLabel: UILabel!
+    @IBOutlet weak var nextStepLabel: UILabel!
 
     
     var minutes = 0
     var seconds = -5
     var timer = Timer()
     var timerRunning = false
+    var times: [String] = ["0:00", "0:30", "0:40", "2:00", "2:15"]
+    var steps: [String] = ["Bloom", "Fill", "Brew", "Push", "Done"]
+    var step = -1;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         timerLabel.text = "0:-5"
+        currentStepLabel.text = "Get ready"
+        nextStepLabel.text = steps[0]
     }
     
     //MARK: Actions
@@ -49,6 +56,9 @@ class ViewController: UIViewController {
         minutes = 0
         seconds = -5
         timerRunning = false
+        toggleButton.isEnabled = true
+        currentStepLabel.text = "Get ready"
+        nextStepLabel.text = steps[0]
     }
     
     func updateTimer() {
@@ -57,7 +67,25 @@ class ViewController: UIViewController {
             minutes += 1
             seconds = 0
         }
-        timerLabel.text = String(format: "%d:%02d", arguments: [minutes, seconds])
+        let timeString = String(format: "%d:%02d", arguments: [minutes, seconds])
+        timerLabel.text = timeString
+        if times.contains(timeString) {
+            nextStep()
+        }
+    }
+    
+    func nextStep() {
+        step += 1
+        currentStepLabel.text = steps[step]
+        if step == steps.count - 1 {
+            nextStepLabel.text = ""
+            timerRunning = false
+            timer.invalidate()
+            toggleButton.isEnabled = false
+            
+        } else {
+            nextStepLabel.text = steps[step + 1]
+        }
     }
 }
 

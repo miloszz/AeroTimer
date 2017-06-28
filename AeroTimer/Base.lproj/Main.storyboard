@@ -31,8 +31,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVf-f9-CVK">
+                                        <rect key="frame" x="0.0" y="93" width="288" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZs-yM-1qu">
+                                        <rect key="frame" x="0.0" y="130" width="288" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xh5-4X-JVx">
-                                        <rect key="frame" x="0.0" y="93" width="288" height="297"/>
+                                        <rect key="frame" x="0.0" y="158.5" width="288" height="231.5"/>
                                         <state key="normal" title="Start"/>
                                         <connections>
                                             <action selector="toggleTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dl1-jX-rXY"/>
@@ -59,6 +71,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentStepLabel" destination="NVf-f9-CVK" id="uPw-9u-G5S"/>
+                        <outlet property="nextStepLabel" destination="eZs-yM-1qu" id="1UZ-iz-1nV"/>
                         <outlet property="timerLabel" destination="p4f-e6-i58" id="9NS-kP-1Rc"/>
                         <outlet property="toggleButton" destination="Xh5-4X-JVx" id="rj3-Wc-L8N"/>
                     </connections>
