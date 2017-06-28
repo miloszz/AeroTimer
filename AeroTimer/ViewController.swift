@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -24,6 +25,8 @@ class ViewController: UIViewController {
     var times: [String] = ["0:00", "0:30", "0:40", "2:00", "2:15"]
     var steps: [String] = ["Bloom", "Fill", "Brew", "Push", "Done"]
     var step = -1;
+    let stepSound: SystemSoundID = 1034 // Tiptoes sound
+    let doneSound: SystemSoundID = 1025 // Fanfare sound
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +79,7 @@ class ViewController: UIViewController {
     }
     
     func nextStep() {
+        
         step += 1
         currentStepLabel.text = steps[step]
         if step == steps.count - 1 {
@@ -83,9 +87,11 @@ class ViewController: UIViewController {
             timerRunning = false
             timer.invalidate()
             toggleButton.isEnabled = false
+            AudioServicesPlaySystemSound(doneSound)
             
         } else {
             nextStepLabel.text = steps[step + 1]
+            AudioServicesPlaySystemSound(stepSound)
         }
     }
 }
